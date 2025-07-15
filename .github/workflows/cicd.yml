@@ -7,7 +7,7 @@ on:
 
 jobs:
   size:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Check the size of the repository
@@ -20,7 +20,7 @@ jobs:
           fi
 
   push_to_mirror:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:
       - uses: actions/checkout@v3
@@ -32,3 +32,4 @@ jobs:
             ${{ vars.MIRROR_URL }}
           ssh_private_key:
             ${{ secrets.GIT_SSH_PRIVATE_KEY }}
+        name: Push to mirror repository
